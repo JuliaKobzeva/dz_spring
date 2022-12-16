@@ -5,6 +5,10 @@ import sky.pro.dz_spring.service.StoreService;
 
 @RestController
 public class StoreController {
+    private StoreService storeService;
 
+    public StoreController (StoreService storeService){
+        this.storeService = storeService;
+    }
 
 }

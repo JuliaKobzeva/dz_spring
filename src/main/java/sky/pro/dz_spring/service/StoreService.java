@@ -10,5 +10,13 @@ import java.util.Map;
 
 @Service
 public class StoreService {
+    private final Map<Integer, Store> items = new HashMap<>();
+
+    public Store addItem(StoreRequest storeRequest){
+        Store store = new Store(storeRequest.getItem());
+
+        this.items.put(store.getId(), store);
+        return store;
+    }
 
 }
