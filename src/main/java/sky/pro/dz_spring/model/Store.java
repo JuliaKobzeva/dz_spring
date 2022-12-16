@@ -1,9 +1,9 @@
 package sky.pro.dz_spring.model;
 
 public class Store {
-    private int id;
-    private String item;
-    private int counter;
+    private final int id;
+    private final String item;
+    private static int counter;
 
     public Store(String item) {
         this.item = item;
@@ -16,10 +16,6 @@ public class Store {
 
     public String getItem() {
         return item;
-    }
-
-    public void setItem(String item) {
-        this.item = item;
     }
 
     @Override

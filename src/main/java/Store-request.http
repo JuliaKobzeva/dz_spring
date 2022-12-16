@@ -1,0 +1,10 @@
+###получить список товаров
+GET http://localhost:8080/store/order/get
+
+###добавить товар
+POST http://localhost:8080/store/order/add
+Content-Type: application/json
+
+{
+  "item": "test"
+}
