@@ -1,14 +1,10 @@
 package sky.pro.dz_spring.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
-import sky.pro.dz_spring.model.Store;
-import sky.pro.dz_spring.record.StoreRequest;
+import org.springframework.web.bind.annotation.*;
 import sky.pro.dz_spring.service.StoreService;
 
 import java.util.Collection;
+import java.util.List;
 
 @RestController
 public class StoreController {
@@ -19,12 +15,12 @@ public class StoreController {
     }
 
     @PostMapping("/order/add")
-    public Store createItem(@RequestBody StoreRequest storeRequest){
-        return this.storeService.addItem(storeRequest);
+    public void add(@RequestParam("id") List<Integer> ids){
+        this.storeService.addToBasket(ids);
     }
 
     @GetMapping("/order/get")
-    public Collection<Store> getAllItems(){
-        return this.storeService.getItems();
+    public List<Integer> get(){
+        return this.storeService.getBusket();
     }
 }

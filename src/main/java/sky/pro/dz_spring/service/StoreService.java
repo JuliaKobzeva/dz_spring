@@ -2,27 +2,26 @@ package sky.pro.dz_spring.service;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
-import sky.pro.dz_spring.model.Store;
-import sky.pro.dz_spring.record.StoreRequest;
+import sky.pro.dz_spring.repository.Basket;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
-@Scope("prototype")
 public class StoreService {
-    private final Map<Integer, Store> items = new HashMap<>();
+    private final Basket basket;
 
-    public Store addItem(StoreRequest storeRequest){
-        Store store = new Store(storeRequest.getItem());
-
-        this.items.put(store.getId(), store);
-        return store;
+    public StoreService (Basket basket){
+        this.basket = basket;
     }
 
-    public Collection<Store> getItems(){
-        return this.items.values();
+    public void addToBasket(List<Integer> ids){
+        this.basket.addToBasket(ids);
+    }
+
+    public List<Integer> getBusket(){
+        return this.basket.getBusket();
     }
 }
