@@ -14,7 +14,7 @@ public class StoreController {
         this.storeService = storeService;
     }
 
-    @PostMapping("/order/add")
+    @GetMapping("/order/add")
     public void add(@RequestParam("id") List<Integer> ids){
         this.storeService.addToBasket(ids);
     }
